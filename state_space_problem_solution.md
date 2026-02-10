@@ -47,7 +47,7 @@ Where:
 
 ## (b) Number of States
 
-### Calculation
+### General Formula
 
 Let's define:
 - **W** = number of white cells in the grid (including S, G, and all cookie shops Ci)
@@ -62,7 +62,21 @@ Since each position can be combined with two possible cookie states (has_cookies
 - For each white cell, the agent can be there **without** cookies: W states
 - Total: **2W states**
 
-### Note
+### Specific Calculation for This Problem
+
+Given the specific grid dimensions:
+
+| Component | Value |
+|-----------|-------|
+| Grid Dimensions | 9 units wide × 6 units high |
+| Total Cells | 9 × 6 = **54 cells** |
+| Obstacles (Black Cells) | **8 cells** |
+| Traversable White Cells | 54 - 8 = **46 cells** |
+| Cookie Status Options | **2** (has cookies or does not) |
+
+$$\text{Total States} = 46 \text{ (positions)} \times 2 \text{ (cookie status)} = \boxed{92 \text{ states}}$$
+
+### General Case Formula
 
 If the grid has dimensions m × n with B black cells, then:
 - W = m × n - B (total cells minus black cells)
@@ -130,5 +144,5 @@ h((2,3), False) = min(5, 5) = 5
 | Component | Description |
 |-----------|-------------|
 | **State** | (position, has_cookies) tuple |
-| **Number of States** | 2W where W = number of white cells |
+| **Number of States** | 2W where W = number of white cells; For this grid: **92 states** (46 positions × 2 cookie states) |
 | **Admissible Heuristic** | Manhattan distance to G if has cookies; otherwise min(Manhattan to any cookie shop + Manhattan from shop to G) |
