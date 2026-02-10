@@ -5,7 +5,7 @@ This document presents graphs that demonstrate when different search algorithms 
 **Conventions:**
 - **S** = Start node
 - **G** = Goal node
-- Nodes are expanded left-to-right (left neighbor is explored first)
+- Nodes are expanded based on the neighbor ordering specified in each graph
 - Arc costs and heuristic values are explicitly stated for each graph
 
 ---
@@ -186,6 +186,6 @@ Total nodes: 7 (S, A, B, C, D, E, G)
 1. **Tree Constraint**: Each graph is a tree (at most one arc into any node).
 2. **Node Limit**: Each graph contains at most 15 nodes.
 3. **Branching Factor**: At most two arcs out of any node.
-4. **Neighbor Ordering**: Left children are always explored before right children.
+4. **Neighbor Ordering**: Specified for each graph (determines DFS exploration order).
 5. **Arc Costs**: Explicitly stated for each graph.
 6. **Heuristic Function**: Explicitly stated using h(n) notation.
