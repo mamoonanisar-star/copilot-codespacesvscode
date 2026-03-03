@@ -201,25 +201,23 @@ def alphabeta(node, alpha=float('-inf'), beta=float('inf')):
 
     if node['player'] == X:  # maximizer
         value = float('-inf')
-        for child in node['children']:
+        for idx, child in enumerate(node['children']):
             child_val = alphabeta(child, alpha, beta)
             value = max(value, child_val)
             alpha = max(alpha, value)
             if alpha >= beta:
                 # Prune remaining children
-                idx = node['children'].index(child)
                 for pruned_child in node['children'][idx + 1:]:
                     _mark_pruned(pruned_child)
                 break
         node['ab_value'] = value
     else:  # minimizer
         value = float('inf')
-        for child in node['children']:
+        for idx, child in enumerate(node['children']):
             child_val = alphabeta(child, alpha, beta)
             value = min(value, child_val)
             beta = min(beta, value)
             if alpha >= beta:
-                idx = node['children'].index(child)
                 for pruned_child in node['children'][idx + 1:]:
                     _mark_pruned(pruned_child)
                 break
